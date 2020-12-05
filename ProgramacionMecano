@@ -1,0 +1,53 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+
+@Teleop
+
+public class ProgramacionMecano extends LinearOpMode {
+
+  Elapsedtime runtime = ElapsedTime();
+  DcMotor leftBack;
+  DcMotor leftFront;
+  DcMotor rightBack;
+  DcMotor rightFront;
+  
+@Override
+public void runOpMode() {
+  leftBack = hardwareMap.get(DcMotor.class, deviceName: "left_drive");
+  leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+  leftBack.setDirection(DcMotor.Direction.FOWARD);
+  
+  rightBack = hardwareMap.get(DcMotor.class, deviceName: "right_drive");
+  rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+  rightBack.setDirection(DcMotor.Direction.REVERSE);
+  
+  leftFront = hardwareMap.get(DcMotor.class, deviceName: "left_drive");
+  leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+  leftFront.setDirection(DcMotor.Direction.FOWARD);
+  
+  rightFront = hardwareMap.get(DcMotor.class, deviceName: "right_drive");
+  rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+  rightFront.setDirection(DcMotor.Direction.REVERSE);
+  
+  double speedAdjust = 7;
+  
+  waitForStart();
+  runtime.reset();
+  
+  while (opModeIsActive()) {
+    if(gamepad1.dpad_left == true) {
+      speedAdjust -= 1;
+    }
+    if(gamepad1.dpad_right == true) {
+      speedAdjust += 1;
+    }
+    leftBack.setPower
